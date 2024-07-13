@@ -1,0 +1,48 @@
+version: '3.8'
+name: se-app
+
+services:
+  app:
+    image: cosmtrek/air:latest
+    restart: always
+    container_name: my_app
+    working_dir: /app
+    environment:
+      - GOPROXY=https://goproxy.io,direct
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - .:/app
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    env_file:
+      - .env
+    networks:
+      - postgres-network
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: postgres_se
+    restart: on-failure
+    image: ${DOCKER_REGISTRY:-docker.io}/postgres:16.1-alpine3.19
+    ports:
+      - ${POSTGRES_PORT:-5432}:5432
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_DB=${POSTGRES_DB}
+    networks:
+      - postgres-network
+
+networks:
+  postgres-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
