@@ -1,0 +1,1356 @@
+definitions:
+  dto.AddSportActivity:
+    properties:
+      program_id:
+        type: integer
+      sport_activity:
+        $ref: '#/definitions/dto.SportActivitRequest'
+    type: object
+  dto.LogIn:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    type: object
+  dto.ProgramRequest:
+    properties:
+      active_days:
+        items:
+          type: boolean
+        type: array
+      description:
+        type: string
+      id:
+        type: integer
+      traineeID:
+        type: integer
+      trainerID:
+        type: integer
+    required:
+    - active_days
+    - trainerID
+    type: object
+  dto.ProgramRequestSetPrice:
+    properties:
+      description:
+        type: string
+      id:
+        type: integer
+      price:
+        type: integer
+      status:
+        type: string
+      traineeID:
+        type: integer
+      trainerID:
+        type: integer
+    required:
+    - traineeID
+    - trainerID
+    type: object
+  dto.Report:
+    properties:
+      description:
+        type: string
+      user_id:
+        type: integer
+    type: object
+  dto.ReportResponse:
+    properties:
+      description:
+        type: string
+      user_id:
+        type: integer
+    type: object
+  dto.RequestsInTrainerPage:
+    properties:
+      date:
+        type: string
+      price:
+        type: integer
+      status:
+        type: string
+      trainee_name:
+        type: string
+      trainer_id:
+        type: integer
+      trainer_name:
+        type: string
+    type: object
+  dto.Response:
+    properties:
+      id:
+        type: integer
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  dto.Sport:
+    properties:
+      description:
+        type: string
+      title:
+        type: string
+      video_path:
+        type: string
+    type: object
+  dto.SportActivitRequest:
+    properties:
+      expected_value:
+        type: integer
+      order_number:
+        type: integer
+      sport:
+        $ref: '#/definitions/dto.SportRequest'
+      value:
+        type: integer
+    type: object
+  dto.SportRequest:
+    properties:
+      description:
+        type: string
+      title:
+        type: string
+      video_id:
+        type: integer
+    type: object
+  dto.SportResponse:
+    properties:
+      description:
+        type: string
+      name:
+        type: string
+      path:
+        type: string
+      title:
+        type: string
+      type:
+        type: string
+      video_id:
+        type: integer
+    type: object
+  dto.TraineeChangeStatus:
+    properties:
+      request_id:
+        type: integer
+      status:
+        type: string
+    type: object
+  dto.TraineeEdit:
+    properties:
+      active_days:
+        items:
+          type: boolean
+        type: array
+      contact:
+        type: string
+      country:
+        type: string
+      height:
+        type: integer
+      language:
+        type: string
+      medicalHistory:
+        type: string
+      sports:
+        type: string
+      status:
+        type: string
+      user:
+        $ref: '#/definitions/dto.UserEdit'
+      user_name:
+        type: string
+      weight:
+        type: integer
+    required:
+    - active_days
+    - contact
+    - country
+    - height
+    - language
+    - medicalHistory
+    - sports
+    - status
+    - user_name
+    - weight
+    type: object
+  dto.TraineeInTrainerPage:
+    properties:
+      name:
+        type: string
+    type: object
+  dto.TraineeProfileCard:
+    properties:
+      contact:
+        type: string
+      country:
+        type: string
+      email:
+        type: string
+      language:
+        type: string
+      status:
+        type: string
+      userName:
+        type: string
+      wallet:
+        type: integer
+    type: object
+  dto.TraineeResponse:
+    properties:
+      health_problems:
+        type: string
+      sport_experience:
+        type: string
+      trainee_profile_card:
+        $ref: '#/definitions/dto.TraineeProfileCard'
+    type: object
+  dto.TrainerEdit:
+    properties:
+      achievements:
+        type: string
+      active_days:
+        items:
+          type: boolean
+        type: array
+      coach_experience:
+        type: integer
+      contact:
+        type: string
+      country:
+        type: string
+      education:
+        type: string
+      language:
+        type: string
+      sport:
+        type: string
+      status:
+        type: string
+      user:
+        $ref: '#/definitions/dto.UserEdit'
+      user_name:
+        type: string
+    required:
+    - achievements
+    - active_days
+    - coach_experience
+    - contact
+    - country
+    - education
+    - language
+    - sport
+    - status
+    - user_name
+    type: object
+  dto.TrainerProfileCard:
+    properties:
+      coach_experience:
+        type: integer
+      contact:
+        type: string
+      country:
+        type: string
+      email:
+        type: string
+      first_name:
+        type: string
+      language:
+        type: string
+      last_name:
+        type: string
+      status:
+        type: string
+      username:
+        type: string
+    type: object
+  dto.TrainerResponse:
+    properties:
+      achievements:
+        type: string
+      education:
+        type: string
+      first_name:
+        type: string
+      id:
+        type: integer
+      last_name:
+        type: string
+      sports:
+        type: string
+      trainer_profile_card:
+        $ref: '#/definitions/dto.TrainerProfileCard'
+    type: object
+  dto.TrainerSetPrice:
+    properties:
+      price:
+        type: integer
+      rejected:
+        type: boolean
+      requestId:
+        type: integer
+      trainerID:
+        type: integer
+    required:
+    - price
+    - requestId
+    type: object
+  dto.TrainingProgram:
+    properties:
+      description:
+        type: string
+      end_date:
+        type: string
+      request_id:
+        type: integer
+      start_date:
+        type: string
+      title:
+        type: string
+      trainer_id:
+        type: integer
+    required:
+    - end_date
+    - request_id
+    - start_date
+    type: object
+  dto.User:
+    properties:
+      age:
+        type: integer
+      block:
+        type: boolean
+      email:
+        type: string
+      first_name:
+        type: string
+      gender:
+        type: string
+      id:
+        type: integer
+      info_id:
+        type: string
+      info_type:
+        type: string
+      last_name:
+        type: string
+      password:
+        minLength: 8
+        type: string
+      phone_number:
+        minLength: 11
+        type: string
+      wallet:
+        type: integer
+    required:
+    - age
+    - email
+    - first_name
+    - gender
+    - info_type
+    - last_name
+    - password
+    - phone_number
+    type: object
+  dto.UserEdit:
+    properties:
+      age:
+        type: integer
+      block:
+        type: boolean
+      email:
+        type: string
+      first_name:
+        type: string
+      gender:
+        type: string
+      id:
+        type: integer
+      info_id:
+        type: string
+      info_type:
+        type: string
+      last_name:
+        type: string
+      password:
+        type: string
+      phone_number:
+        type: string
+      wallet:
+        type: integer
+    type: object
+  dto.UserEditTraineeOrTrainer:
+    properties:
+      achievements:
+        type: string
+      active_days:
+        items:
+          type: boolean
+        type: array
+      coach_experience:
+        type: integer
+      contact:
+        type: string
+      country:
+        type: string
+      education:
+        type: string
+      height:
+        type: integer
+      language:
+        type: string
+      medicalHistory:
+        type: string
+      sport:
+        type: string
+      sports:
+        type: string
+      status:
+        type: string
+      user:
+        $ref: '#/definitions/dto.UserEdit'
+      user_name:
+        type: string
+      weight:
+        type: integer
+    type: object
+  dto.UserResponse:
+    properties:
+      ID:
+        type: integer
+      block:
+        type: boolean
+      email:
+        type: string
+      first_name:
+        type: string
+      info_id:
+        type: string
+      info_type:
+        type: string
+      jwt:
+        type: string
+      last_name:
+        type: string
+      password:
+        type: string
+      phone_number:
+        type: string
+      profile:
+        additionalProperties:
+          type: string
+        type: object
+      type:
+        type: string
+      wallet:
+        type: integer
+    type: object
+  dto.WeekPlan:
+    properties:
+      friday:
+        type: boolean
+      monday:
+        type: boolean
+      saturday:
+        type: boolean
+      sunday:
+        type: boolean
+      thursday:
+        type: boolean
+      tuesday:
+        type: boolean
+      wednesday:
+        type: boolean
+    type: object
+info:
+  contact:
+    email: mahdiehmoghiseh81@gmail.com
+    name: Mahdieh Moghiseh
+  description: Software Engineering Course Project
+  title: SE Project
+  version: "1.0"
+paths:
+  /admin/report-block:
+    put:
+      consumes:
+      - application/json
+      description: block user
+      parameters:
+      - description: JWT Token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Report ID
+        in: query
+        name: report-id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Report information
+          schema:
+            $ref: '#/definitions/dto.Response'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Block user
+      tags:
+      - admin
+  /admin/reports:
+    get:
+      consumes:
+      - application/json
+      description: get reports
+      parameters:
+      - description: JWT token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Report information
+          schema:
+            items:
+              $ref: '#/definitions/dto.ReportResponse'
+            type: array
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get reports
+      tags:
+      - admin
+  /admin/sport:
+    post:
+      consumes:
+      - application/json
+      description: add sport
+      parameters:
+      - description: JWT token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Sport information
+        in: body
+        name: Sport
+        required: true
+        schema:
+          $ref: '#/definitions/dto.Sport'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sport information
+          schema:
+            $ref: '#/definitions/dto.SportResponse'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Add sport
+      tags:
+      - admin
+  /admin/sports:
+    get:
+      consumes:
+      - application/json
+      description: get sports
+      parameters:
+      - description: JWT Token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sports information
+          schema:
+            items:
+              $ref: '#/definitions/dto.SportResponse'
+            type: array
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get sports
+      tags:
+      - admin
+  /admin/users:
+    get:
+      consumes:
+      - application/json
+      description: get all users
+      parameters:
+      - description: JWT token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: User information
+          schema:
+            items:
+              $ref: '#/definitions/dto.User'
+            type: array
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get users
+      tags:
+      - admin
+  /trainee/:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves the week plan of a trainee by ID
+      parameters:
+      - description: JWT token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Week plan information
+          schema:
+            $ref: '#/definitions/dto.WeekPlan'
+        "404":
+          description: Trainee not found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get week plan
+      tags:
+      - trainee
+  /trainee/add-report:
+    post:
+      consumes:
+      - application/json
+      description: add report
+      parameters:
+      - description: Report data
+        in: body
+        name: report
+        required: true
+        schema:
+          $ref: '#/definitions/dto.Report'
+      - description: JWT token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Report information
+          schema:
+            $ref: '#/definitions/dto.ReportResponse'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      summary: Add report
+      tags:
+      - trainee
+  /trainee/profile/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves the profile information of a trainee by ID
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Trainee profile information
+          schema:
+            $ref: '#/definitions/dto.TraineeResponse'
+        "404":
+          description: Trainee not found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get trainee profile
+      tags:
+      - trainee
+    put:
+      consumes:
+      - application/json
+      description: Updates the profile information of a trainee by UserID
+      parameters:
+      - description: JWT token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Trainee profile data
+        in: body
+        name: trainee
+        required: true
+        schema:
+          $ref: '#/definitions/dto.TraineeEdit'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Updated trainee profile
+          schema:
+            $ref: '#/definitions/dto.TraineeResponse'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "404":
+          description: Trainee not found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Edit trainee profile
+      tags:
+      - trainee
+  /trainee/program/see:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves the program of a trainee by ID
+      parameters:
+      - description: JWT token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Trainee program
+          schema:
+            $ref: '#/definitions/dto.TrainingProgram'
+        "404":
+          description: Trainee not found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get program
+      tags:
+      - trainee
+  /trainee/request/:
+    post:
+      consumes:
+      - application/json
+      description: Creates a new program request with the provided data
+      parameters:
+      - description: JWT token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Program request data
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ProgramRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Created program request
+          schema:
+            $ref: '#/definitions/dto.ProgramRequest'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "404":
+          description: Invalid user ID or not found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Create program request
+      tags:
+      - trainee
+  /trainee/request/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Change request status by trainee
+      parameters:
+      - description: JWT token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Request Change Status
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.TraineeChangeStatus'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Trainee Change Status
+          schema:
+            $ref: '#/definitions/dto.ProgramRequestSetPrice'
+        "404":
+          description: Trainee not found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Change request status
+      tags:
+      - trainee
+  /trainee/request/all:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves the request of a trainee by ID
+      parameters:
+      - description: JWT token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Trainee request
+          schema:
+            $ref: '#/definitions/dto.RequestsInTrainerPage'
+        "404":
+          description: Trainee not found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get trainee request
+      tags:
+      - trainee
+  /trainer/:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves the week plan of a trainer by ID
+      parameters:
+      - description: JWT token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Week plan information
+          schema:
+            $ref: '#/definitions/dto.WeekPlan'
+        "404":
+          description: Trainee not found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get week plan
+      tags:
+      - trainer
+  /trainer/add-report:
+    post:
+      consumes:
+      - application/json
+      description: add report
+      parameters:
+      - description: Report data
+        in: body
+        name: report
+        required: true
+        schema:
+          $ref: '#/definitions/dto.Report'
+      - description: JWT token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Report information
+          schema:
+            $ref: '#/definitions/dto.ReportResponse'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      summary: Add report
+      tags:
+      - trainer
+  /trainer/price:
+    put:
+      consumes:
+      - application/json
+      description: Trainer sets the price for a training request
+      parameters:
+      - description: Trainer Set Price Data
+        in: body
+        name: TrainerSetPrice
+        required: true
+        schema:
+          $ref: '#/definitions/dto.TrainerSetPrice'
+      - description: JWT token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.ProgramRequestSetPrice'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      summary: Set price for a request
+      tags:
+      - trainer
+  /trainer/profile/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves the profile information of a trainer by ID
+      parameters:
+      - description: JWT token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Trainer profile information
+          schema:
+            $ref: '#/definitions/dto.TrainerResponse'
+        "404":
+          description: Trainer not found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get trainer profile
+      tags:
+      - trainer
+    put:
+      consumes:
+      - application/json
+      description: Updates the profile information of a trainer by UserID
+      parameters:
+      - description: Trainer profile data
+        in: body
+        name: trainer
+        required: true
+        schema:
+          $ref: '#/definitions/dto.TrainerEdit'
+      - description: JWT token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Updated trainer profile
+          schema:
+            $ref: '#/definitions/dto.TrainerResponse'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "404":
+          description: Trainer not found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Edit trainer profile
+      tags:
+      - trainer
+  /trainer/program:
+    post:
+      consumes:
+      - application/json
+      description: create a training program by trainer
+      parameters:
+      - description: Trainer Create Program data
+        in: body
+        name: TrainingProgram
+        required: true
+        schema:
+          $ref: '#/definitions/dto.TrainingProgram'
+      - description: JWT token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.Response'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      summary: creates a program
+      tags:
+      - trainer
+  /trainer/program/sport-activity:
+    put:
+      consumes:
+      - application/json
+      description: add sport activity to program by trainer
+      parameters:
+      - description: Add Sport Activity data
+        in: body
+        name: SportActivity
+        required: true
+        schema:
+          $ref: '#/definitions/dto.AddSportActivity'
+      - description: JWT token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.Response'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      summary: add sport activity
+      tags:
+      - trainer
+  /trainer/requests/:
+    get:
+      consumes:
+      - application/json
+      description: get requests of a trainer by ID
+      parameters:
+      - description: JWT token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Trainer requests
+          schema:
+            items:
+              $ref: '#/definitions/dto.RequestsInTrainerPage'
+            type: array
+        "404":
+          description: Trainer not found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get requests
+      tags:
+      - trainer
+  /trainer/trainees/:
+    get:
+      consumes:
+      - application/json
+      description: get trainees of a trainer by ID
+      parameters:
+      - description: JWT token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Trainer trainees
+          schema:
+            items:
+              $ref: '#/definitions/dto.TraineeInTrainerPage'
+            type: array
+        "400":
+          description: 'Bad Request: User ID header missing or invalid token'
+          schema:
+            type: string
+        "404":
+          description: Trainer not found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get trainees
+      tags:
+      - trainer
+  /trainer/trainers/:
+    get:
+      consumes:
+      - application/json
+      description: all trainers
+      parameters:
+      - description: JWT token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.TrainerResponse'
+            type: array
+        "400":
+          description: Invalid request
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      summary: get all trainers
+      tags:
+      - trainer
+  /user/:id/profile:
+    get:
+      consumes:
+      - application/json
+      description: get user profile by id
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: User information
+          schema:
+            $ref: '#/definitions/dto.UserResponse'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get a User
+      tags:
+      - user
+  /user/login:
+    post:
+      consumes:
+      - application/json
+      description: Logs in a user using email and password
+      parameters:
+      - description: Email and password
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.LogIn'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: User information
+          schema:
+            $ref: '#/definitions/dto.UserResponse'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Log in user
+      tags:
+      - user
+  /user/profile:
+    put:
+      consumes:
+      - application/json
+      description: Edit user profile based on the user's role (trainer or trainee)
+      parameters:
+      - description: JWT Token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Trainee or Trainer profile data
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UserEditTraineeOrTrainer'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successful
+          schema:
+            $ref: '#/definitions/dto.Response'
+        "400":
+          description: Bad request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+      summary: Edit user profile
+      tags:
+      - user
+  /user/sign-up:
+    post:
+      consumes:
+      - application/json
+      description: Signs up a new user with provided details
+      parameters:
+      - description: User details
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/dto.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: User information
+          schema:
+            $ref: '#/definitions/dto.UserResponse'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Sign up user
+      tags:
+      - user
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
