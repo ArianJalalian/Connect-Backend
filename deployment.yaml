@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: my-app
+          image: mahdieh/my-app:latest
+        - name: postgres
+          image: mahdieh/postgres:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ENV_VAR_NAME
+              value: "value"
+          volumeMounts:
+            - name: storage-volume
+              mountPath: /app/storage
+      volumes:
+        - name: storage-volume
+          emptyDir: {}  # Example of an emptyDir volume, replace with PVC if needed

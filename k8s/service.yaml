@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mass-media-core-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: mass-media-core
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 1234
